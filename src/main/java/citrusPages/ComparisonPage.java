@@ -8,7 +8,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
 
 public class ComparisonPage extends BasePage {
     BasketFragment basketFragment = new BasketFragment();
@@ -16,6 +15,8 @@ public class ComparisonPage extends BasePage {
     ProductSelectionFragment productSelectionFragment = new ProductSelectionFragment();
 
     ElementsCollection comparisonItemsBlocks = $$x("//div[@class='relative']");
+    ElementsCollection itemNamesList = $$x("//div[@class='short-itm-desc']/a");
+    ElementsCollection itemPricesList = $$x("//div[@class='short-itm-desc']//span[@class='price-number']");
 
     public ComparisonPage waitForPageToLoad() {
         super.waitForPageToLoad();
@@ -27,17 +28,17 @@ public class ComparisonPage extends BasePage {
         return this;
     }
 
-    public int getComparisonItemsListSize() {
+    public ElementsCollection getComparisonItemsList() {
         comparisonItemsBlocks.shouldHave(CollectionCondition.sizeGreaterThan(0));
-        return comparisonItemsBlocks.size();
+        return comparisonItemsBlocks;
     }
 
-    public String getComparisonItemsNameByCount(int n) {
-        return $$x("//div[@class='short-itm-desc']/a").get(n).getAttribute("title");
+    public SelenideElement getComparisonItemsNameByCount(int n) {
+        return itemNamesList.get(n);
     }
 
-    public String getComparisonItemsPriceByCount(int n) {
-        return $$x("//div[@class='short-itm-desc']//span[@class='price-number']").get(n).getText();
+    public SelenideElement getComparisonItemsPriceByCount(int n) {
+        return itemPricesList.get(n);
     }
 
     public BasketFragment getBasketFragment() {

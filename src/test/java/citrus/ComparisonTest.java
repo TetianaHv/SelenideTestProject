@@ -3,13 +3,13 @@ package citrus;
 import citrusPages.ComparisonPage;
 import citrusPages.HomePage;
 import citrusPages.ProductListPage;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
 
 public class ComparisonTest {
     HomePage homePage;
@@ -52,11 +52,11 @@ public class ComparisonTest {
         comparisonPage.waitForPageToLoad()
                 .closePopup();
 
-        assertEquals(comparisonPage.getComparisonItemsListSize(), 2);
-        assertEquals(comparisonPage.getComparisonItemsNameByCount(0), productName1);
-        assertEquals(comparisonPage.getComparisonItemsNameByCount(2), productName2);
-        assertEquals(comparisonPage.getComparisonItemsPriceByCount(0), productPrice1);
-        assertEquals(comparisonPage.getComparisonItemsPriceByCount(2), productPrice2);
+        comparisonPage.getComparisonItemsList().shouldHaveSize(2);
+        comparisonPage.getComparisonItemsNameByCount(0).shouldHave(Condition.attribute("title", productName1));
+        comparisonPage.getComparisonItemsNameByCount(2).shouldHave(Condition.attribute("title", productName2));
+        comparisonPage.getComparisonItemsPriceByCount(0).shouldHave(Condition.text(productPrice1));
+        comparisonPage.getComparisonItemsPriceByCount(2).shouldHave(Condition.text(productPrice2));
 
         comparisonPage.getProductSelectionFragment().clickAddNewProductButton();
         String productName3 = comparisonPage.getProductSelectionFragment().getProductNameByCount(0);
@@ -67,12 +67,12 @@ public class ComparisonTest {
                 .closePopup();
 
         Selenide.sleep(50);
-        assertEquals(comparisonPage.getComparisonItemsListSize(), 3);
-        assertEquals(comparisonPage.getComparisonItemsNameByCount(0), productName1);
-        assertEquals(comparisonPage.getComparisonItemsNameByCount(4), productName2);
-        assertEquals(comparisonPage.getComparisonItemsNameByCount(2), productName3);
-        assertEquals(comparisonPage.getComparisonItemsPriceByCount(0), productPrice1);
-        assertEquals(comparisonPage.getComparisonItemsPriceByCount(4), productPrice2);
-        assertEquals(comparisonPage.getComparisonItemsPriceByCount(2), productPrice3);
+        comparisonPage.getComparisonItemsList().shouldHaveSize(3);
+        comparisonPage.getComparisonItemsNameByCount(0).shouldHave(Condition.attribute("title", productName1));
+        comparisonPage.getComparisonItemsNameByCount(4).shouldHave(Condition.attribute("title", productName2));
+        comparisonPage.getComparisonItemsNameByCount(2).shouldHave(Condition.attribute("title", productName3));
+        comparisonPage.getComparisonItemsPriceByCount(0).shouldHave(Condition.text(productPrice1));
+        comparisonPage.getComparisonItemsPriceByCount(4).shouldHave(Condition.text(productPrice2));
+        comparisonPage.getComparisonItemsPriceByCount(2).shouldHave(Condition.text(productPrice3));
     }
 }

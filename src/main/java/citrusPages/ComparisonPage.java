@@ -4,7 +4,6 @@ import citrusPages.fragments.BasketFragment;
 import citrusPages.fragments.HeaderFragment;
 import citrusPages.fragments.ProductSelectionFragment;
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -17,7 +16,6 @@ public class ComparisonPage extends BasePage {
     ProductSelectionFragment productSelectionFragment = new ProductSelectionFragment();
 
     ElementsCollection comparisonItemsBlocks = $$x("//div[@class='relative']");
-    SelenideElement title = $x("//h1");
 
     public ComparisonPage waitForPageToLoad() {
         super.waitForPageToLoad();

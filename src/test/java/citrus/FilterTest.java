@@ -14,6 +14,7 @@ public class FilterTest {
     HomePage homePage;
     ProductListPage productListPage;
 
+    String mainMenuName = "Смартфоны";
     String menuName1 = "Samsung";
     String minFilterPrice = "6000";
     String maxFilterPrice = "15000";
@@ -46,13 +47,13 @@ public class FilterTest {
     public void priceFilterTest() {
         homePage.waitForPageToLoad()
                 .closePopup()
-                .hoverMenuLine("Смартфоны")
+                .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName1);
         productListPage.waitForPageToLoad()
-                .setMinimumPriceFilter(minFilterPrice)
-                .waitForPageToLoad()
-                .setMaximumPriceFilter(maxFilterPrice)
-                .waitForPageToLoad();
+                .getFilterFragment().setMinimumPriceFilter(minFilterPrice);
+        productListPage.waitForPageToLoad()
+                .getFilterFragment().setMaximumPriceFilter(maxFilterPrice);
+        productListPage.waitForPageToLoad();
 
         assertTrue(productListPage.isProductNameConsistsFilterName(menuName1));
         assertTrue(productListPage.isProductPriceInsideOfFilterRange(minFilterPrice, maxFilterPrice));
@@ -62,13 +63,13 @@ public class FilterTest {
     public void memorySizeFilterTest() {
         homePage.waitForPageToLoad()
                 .closePopup()
-                .hoverMenuLine("Смартфоны")
+                .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName2);
         productListPage.waitForPageToLoad()
-                .addMemoryFilter(memoryFilterBlock, memorySizeFilter1)
-                .waitForPageToLoad()
-                .addMemoryFilter(memoryFilterBlock, memorySizeFilter2)
-                .waitForPageToLoad();
+                .getFilterFragment().addMemoryFilter(memoryFilterBlock, memorySizeFilter1);
+        productListPage.waitForPageToLoad()
+                .getFilterFragment().addMemoryFilter(memoryFilterBlock, memorySizeFilter2);
+        productListPage.waitForPageToLoad();
 
         assertTrue(productListPage.isProductNameConsistsFilterName(menuName2));
         assertTrue(productListPage.isProductNameConsistsFilterName(memorySizeFilter1, memorySizeFilter2));
@@ -78,11 +79,11 @@ public class FilterTest {
     public void bodyMaterialFilterTest() {
         homePage.waitForPageToLoad()
                 .closePopup()
-                .hoverMenuLine("Смартфоны")
+                .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName3);
         productListPage.waitForPageToLoad()
-                .addBodyMaterialFilter(bodyMaterialFilterBlock, bodyMaterial)
-                .waitForPageToLoad()
+                .getFilterFragment().addBodyMaterialFilter(bodyMaterialFilterBlock, bodyMaterial);
+        productListPage.waitForPageToLoad()
                 .closePopup();
 
         assertTrue(productListPage.isProductNameConsistsFilterName(menuName3));

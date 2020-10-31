@@ -66,9 +66,9 @@ public class FilterTest {
                 .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName2);
         productListPage.waitForPageToLoad()
-                .getFilterFragment().addMemoryFilter(memoryFilterBlock, memorySizeFilter1);
+                .getFilterFragment().addFilterByName(memoryFilterBlock, memorySizeFilter1);
         productListPage.waitForPageToLoad()
-                .getFilterFragment().addMemoryFilter(memoryFilterBlock, memorySizeFilter2);
+                .getFilterFragment().addFilterByName(memoryFilterBlock, memorySizeFilter2);
         productListPage.waitForPageToLoad();
 
         assertTrue(productListPage.isProductNameConsistsFilterName(menuName2));
@@ -82,7 +82,7 @@ public class FilterTest {
                 .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName3);
         productListPage.waitForPageToLoad()
-                .getFilterFragment().addBodyMaterialFilter(bodyMaterialFilterBlock, bodyMaterial);
+                .getFilterFragment().addFilterByName(bodyMaterialFilterBlock, bodyMaterial);
         productListPage.waitForPageToLoad()
                 .closePopup();
 

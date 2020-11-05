@@ -1,4 +1,4 @@
-package citrusPages;
+package ui.citrus.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;

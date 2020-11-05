@@ -1,9 +1,9 @@
-package citrus;
+package ui.citrus;
 
-import citrusPages.ComparisonPage;
-import citrusPages.HomePage;
-import citrusPages.ProductListPage;
-import citrusPages.ProductPage;
+import ui.citrus.pages.ComparisonPage;
+import ui.citrus.pages.HomePage;
+import ui.citrus.pages.ProductListPage;
+import ui.citrus.pages.ProductPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.*;
@@ -16,7 +16,7 @@ public class BasketTest {
     ProductPage productPage;
     ComparisonPage comparisonPage;
 
-    String maneMenuName = "Смартфоны";
+    String mainMenuName = "Смартфоны";
     String menuName = "Apple";
     String productName = "Apple iPhone 11 128Gb Black";
     String productTestName = "Apple iPhone";
@@ -43,7 +43,7 @@ public class BasketTest {
     public void addProductToBasketViaMenu() {
         homePage.waitForPageToLoad()
                 .closePopup()
-                .hoverMenuLine(maneMenuName)
+                .hoverMenuLine(mainMenuName)
                 .clickLinkInMenu(menuName);
         productListPage.waitForPageToLoad()
                 .closePopup()
@@ -71,7 +71,7 @@ public class BasketTest {
         productListPage.addProductToBasket(productName);
         productListPage.getBasketFragment().closeBasketWidget();
 
-        productPage.getHeaderFragment().clickOnMainBasketIcon();
+        productListPage.getHeaderFragment().clickOnMainBasketIcon();
         productListPage.getBasketFragment().getBasket().shouldBe(Condition.visible);
         productListPage.getBasketFragment().getProductNamesFromBasket().shouldHaveSize(1);
         productListPage.getBasketFragment().getProductNamesFromBasket().get(0).shouldHave(Condition.text(productName));

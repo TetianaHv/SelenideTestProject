@@ -1,7 +1,7 @@
-package citrus;
+package ui.citrus;
 
-import citrusPages.HomePage;
-import citrusPages.ProductListPage;
+import ui.citrus.pages.HomePage;
+import ui.citrus.pages.ProductListPage;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

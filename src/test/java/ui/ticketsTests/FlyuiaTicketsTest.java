@@ -1,4 +1,4 @@
-package ticketsTests;
+package ui.ticketsTests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;

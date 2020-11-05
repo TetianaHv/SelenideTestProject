@@ -1,6 +1,6 @@
-package citrusPages;
+package ui.citrus.pages;
 
-import citrusPages.fragments.SearchFragment;
+import ui.citrus.fragments.SearchFragment;
 
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;

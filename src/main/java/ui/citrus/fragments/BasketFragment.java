@@ -1,4 +1,4 @@
-package citrusPages.fragments;
+package ui.citrus.fragments;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;

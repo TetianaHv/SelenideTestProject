@@ -3,7 +3,7 @@ package api_RestAssured;
 import api.Employee;
 import api.EmployeeResponse;
 import api.PostEmployeeModel;
-import api_RestAssured.utils.LogListener;
+import api.utils.LogListener;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

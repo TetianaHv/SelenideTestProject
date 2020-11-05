@@ -1,4 +1,4 @@
-package api_RestAssured.utils;
+package api.utils;
 
 import io.qameta.allure.Attachment;
 import io.restassured.RestAssured;
